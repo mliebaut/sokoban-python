@@ -21,14 +21,29 @@ def main(stdscr):
         
         entry = stdscr.getch()
         stdscr.clear()
-        print(entry)
         
         if entry == 27 or entry == 113:
             curses.endwin()
             exit()
             
         if entry == curses.KEY_UP:
-            player.moveUp(self)
+            player.moveUp()
+            mapReader.displayMap(stdscr)
+            stdscr.refresh()
+
+        if entry == curses.KEY_DOWN:
+            player.moveDown()
+            mapReader.displayMap(stdscr)
+            stdscr.refresh()
+
+        if entry == curses.KEY_LEFT:
+            player.moveLeft()
+            mapReader.displayMap(stdscr)
+            stdscr.refresh()
+
+        if entry == curses.KEY_RIGHT:
+            player.moveRight()
+            mapReader.displayMap(stdscr)
             stdscr.refresh()
         
 if __name__ == "__main__":
