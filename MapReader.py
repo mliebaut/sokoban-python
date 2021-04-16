@@ -48,22 +48,20 @@ class MapReader:
     if number_O != number_X:
           print(f"Il faut autant de box que d'emplacements !")
           return False
-        
+
     #On verifie que la map est fermée
     self.arrayMap = self.map.split('\n')
-    self.arrayMap = [re.sub("^(\s*)#", item) for item in self.arrayMap]
-    
-    # self.arrayMap = re.sub("[^#]") 
-    
+    self.arrayMap = [re.sub("^(\s*)[^#]", '', item) for item in self.arrayMap]
+
     for i in enumerate(self.arrayMap):
-          if i == 0 or len(self.arrayMap) -1 == i:
-                if re.match("[^#]", self.arrayMap[i]):
-                      print(f"Cette map n'est pas valide")
+          if i[0] == 0 or len(self.arrayMap) - 1 == i[0]:
+                if re.search("[^#]", self.arrayMap[i[0]]):
+                      print(i, re.match("[^#]", self.arrayMap[i[0]]))
+                      print(f"Cette map n'est pas valide 1")
                       return False
           else:
-                if re.match("^#.*#$", self.arrayMap[i]) != None:
-                      print(f"Cette map n'est pas valide")
+                if re.match("^#.*#$", self.arrayMap[i[0]]) == None:
+                      print(i, re.match("^#.*#$", self.arrayMap[i[0]]))
+                      print(f"Cette map n'est pas valide 2")
                       return False
-                        
-    # Nous devons prendre une map en paramètre qui doit être fermée!(toutes tailles possibles)
     return True
