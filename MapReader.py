@@ -1,4 +1,6 @@
 import os
+import re #import pour expression reguliere
+import sys
 
 class MapReader:
   def __init__(self, mapPath):
@@ -12,6 +14,11 @@ class MapReader:
       return file.readlines()
 
   def verifyMap(self):
+    
+    #On verifie le nombre de P dans la map
+    for item in re.finditer("P", self.map):
+          print(item, file=sys.stderr)
+      
     # Avec un seul Joueur -> Par un P -> sinon erreur
     # Autant de boxe que d'emplacement -> une box X et un emplacement O
     # La map doit contenir que des espaces \n des #,X,0,P
