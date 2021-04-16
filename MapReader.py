@@ -17,7 +17,7 @@ class MapReader:
     
     number_P = 0
     number_X = 0
-    number_0 = 0
+    char_O = 0
     verif_caractere = False
     #On verifie le nombre de P dans la map
     for item in re.finditer("P", self.map):
@@ -29,7 +29,7 @@ class MapReader:
           print(f"Il n'y a pas assez de joueur !")
           return False
     
-    for item in re.finditer("^(#|X|0|P)*$", self.map.rstrip()):
+    for item in re.finditer("^(#|X|O|P|\s)*$", self.map.rstrip()):
           verif_caractere = True
     
     if verif_caractere != True:
