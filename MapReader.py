@@ -16,6 +16,9 @@ class MapReader:
   def verifyMap(self):
     
     number_P = 0
+    number_X = 0
+    number_0 = 0
+    verif_caractere = False
     #On verifie le nombre de P dans la map
     for item in re.finditer("P", self.map):
           number_P += 1
@@ -25,7 +28,14 @@ class MapReader:
     elif number_P < 1:
           print(f"Il n'y a pas assez de joueur !")
           return False
-          
+    
+    for item in re.finditer("^(#|X|0|P)*$", self.map.rstrip()):
+          verif_caractere = True
+    
+    if verif_caractere != True:
+          print(f"Cette map contient des caracteres non valides")
+          return False
+        
       
     # Avec un seul Joueur -> Par un P -> sinon erreur
     # La map doit contenir que des espaces \n des #,X,0,P
