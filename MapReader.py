@@ -57,11 +57,11 @@ class MapReader:
           if i[0] == 0 or len(self.arrayMap) - 1 == i[0]:
                 if re.search("[^#]", self.arrayMap[i[0]]):
                       print(i, re.match("[^#]", self.arrayMap[i[0]]))
-                      print(f"Cette map n'est pas valide 1")
+                      print(f"Cette map n'est pas valide: Il faut une map avec les bordures fermées")
                       return False
           else:
                 if re.match("^#.*#$", self.arrayMap[i[0]]) == None:
                       print(i, re.match("^#.*#$", self.arrayMap[i[0]]))
-                      print(f"Cette map n'est pas valide 2")
+                      print(f"Cette map n'est pas valide: Il faut une map avec les bordures fermées")
                       return False
     return True
