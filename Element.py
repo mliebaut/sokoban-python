@@ -6,6 +6,7 @@ class Element:
         self.pos_y = pos_y
         self.max_x = None
         self.max_y = None
+        self.maxMin()
         
 
     def moveUp(self):
@@ -24,9 +25,9 @@ class Element:
         if self.pos_x > 0:
             self.pos_x -= 1
         
-    def maxMin():
+    def maxMin(self):
         self.max_x = []
-        map = MapReader.MapReader().getStaticMap()
+        map = MapReader.MapReader.getStaticMap()
         
         self.max_y = len(map) - 1
         
