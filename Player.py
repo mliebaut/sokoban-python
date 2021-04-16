@@ -11,9 +11,9 @@ class Player(Element.Element):
     def searchPos(self, map):
         for index, line in enumerate(map):
             try:
-                pos_x = (line.index('P'))
+                pos_x = line.index('P')
                 self.pos_x = pos_x
-                self.pos_y = pos_y
+                self.pos_y = index
             except:
                 pass
             

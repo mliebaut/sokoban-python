@@ -46,11 +46,13 @@ class Element:
     def moving(self, oldPosX, oldPosY, posX, posY):
         map = MapReader.MapReader.getStaticMap()
 
+        # print(self.pos_x, self.pos_y)
+
         # On remplace l'ancien charactere P par un espace
-        oldTempString = map[oldPosY - 1]
+        oldTempString = map[oldPosY]
         oldTempString = [char for char in oldTempString]
         oldTempString[oldPosX] = ' '
-        map[oldPosY - 1] = ''.join(oldTempString)
+        map[oldPosY] = ''.join(oldTempString)
 
         # On place P à son nouvel emplacement
         newTempString = map[posY]
@@ -58,6 +60,6 @@ class Element:
         newTempString[posX] = 'P'
         map[posY] = ''.join(newTempString)
 
-        print(map)
+        # print(map)
 
 
