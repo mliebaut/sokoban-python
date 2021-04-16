@@ -9,6 +9,10 @@ def main(stdscr):
     mapReader = MapReader.MapReader('map')
     print(mapReader.verifyMap())
 
+    if mapReader.verifyMap() == False:
+        print(f"Il y a trop de joueurs !")
+        curses.endwin()
+        exit()
 
     while True:
         entry = stdscr.getch()

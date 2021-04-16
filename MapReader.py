@@ -15,9 +15,12 @@ class MapReader:
 
   def verifyMap(self):
     
+    number_P = 0
     #On verifie le nombre de P dans la map
     for item in re.finditer("P", self.map):
-          print(item, file=sys.stderr)
+          number_P += 1
+    if number_P != 1:
+          return False
       
     # Avec un seul Joueur -> Par un P -> sinon erreur
     # Autant de boxe que d'emplacement -> une box X et un emplacement O
