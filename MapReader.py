@@ -6,6 +6,7 @@ class MapReader:
   def __init__(self, mapPath):
     self.mapPath = mapPath
     self.map = None
+    self.arrayMap = None
     self.readMap()
   
   def readMap(self):
@@ -17,7 +18,7 @@ class MapReader:
     
     number_P = 0
     number_X = 0
-    char_O = 0
+    number_O = 0
     verif_caractere = False
     #On verifie le nombre de P dans la map
     for item in re.finditer("P", self.map):
@@ -28,22 +29,24 @@ class MapReader:
     elif number_P < 1:
           print(f"Il n'y a pas assez de joueur !")
           return False
-    
+
     #On verifie qu'il n'y a bien que les caracteres autorisés
     for item in re.finditer("^(#|X|O|P|\s)*$", self.map.rstrip()):
           verif_caractere = True
-    
+
     if verif_caractere != True:
           print(f"Cette map contient des caracteres non valides")
           return False
-    
+
     #On verifie qu'il y autant de box que d'emplacement
-    match_pair = re.match(r"(O)|(X)", self.map)
- 
-    if len(match_pair.group(0)) != len(match_pair.group(1)):
+    for item in re.finditer("(O)|(X)", self.map):
+          if item.group() == 'O':
+              number_O += 1
+          else:
+              number_X += 1
+    if number_O != number_X:
           print(f"Il faut autant de box que d'emplacements !")
           return False
-    
-    # Autant de boxe que d'emplacement -> une box X et un emplacement O
+
     # Nous devons prendre une map en paramètre qui doit être fermée!(toutes tailles possibles)
     return self.map
