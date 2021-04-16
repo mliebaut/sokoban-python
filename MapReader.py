@@ -65,3 +65,13 @@ class MapReader:
                       print(f"Cette map n'est pas valide: Il faut une map avec les bordures fermées")
                       return False
     return True
+  
+  def displayMap(self, stdscr):
+        pos_y = 0
+        
+        for line in self.arrayMap:
+              pos_y += 1
+              stdscr.addstr(pos_y, 10, line)
+              
+              
+    

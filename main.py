@@ -12,8 +12,11 @@ def main(stdscr):
         curses.endwin()
         exit()
 
+    mapReader.displayMap(stdscr)
     while True:
+        
         entry = stdscr.getch()
+        stdscr.clear()
         print(entry)
         
         if entry == 27 or entry == 113:
