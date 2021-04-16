@@ -7,7 +7,6 @@ def main(stdscr):
     stdscr.keypad(True)
 
     mapReader = MapReader.MapReader('map')
-    print(mapReader.verifyMap())
 
     if mapReader.verifyMap() == False:
         curses.endwin()

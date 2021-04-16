@@ -28,6 +28,7 @@ class MapReader:
           
       
     # Avec un seul Joueur -> Par un P -> sinon erreur
-    # Autant de boxe que d'emplacement -> une box X et un emplacement O
     # La map doit contenir que des espaces \n des #,X,0,P
+    # Autant de boxe que d'emplacement -> une box X et un emplacement O
+    # Nous devons prendre une map en paramètre qui doit être fermée!(toutes tailles possibles)
     return self.map
