@@ -1,6 +1,7 @@
 import curses
 import MapReader
 import Player
+import Box
 
 def main(stdscr):
     curses.noecho()
@@ -14,7 +15,7 @@ def main(stdscr):
         exit()
 
     player = Player.Player()
-    
+    box = Box.Box()
 
     mapReader.displayMap(stdscr)
     while True:
