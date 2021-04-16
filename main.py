@@ -10,7 +10,6 @@ def main(stdscr):
     print(mapReader.verifyMap())
 
     if mapReader.verifyMap() == False:
-        print(f"Il y a trop de joueurs !")
         curses.endwin()
         exit()
 

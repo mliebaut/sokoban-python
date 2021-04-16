@@ -19,8 +19,13 @@ class MapReader:
     #On verifie le nombre de P dans la map
     for item in re.finditer("P", self.map):
           number_P += 1
-    if number_P != 1:
+    if number_P > 1:
+          print(f"Il y a trop de joueurs !")
           return False
+    elif number_P < 1:
+          print(f"Il n'y a pas assez de joueur !")
+          return False
+          
       
     # Avec un seul Joueur -> Par un P -> sinon erreur
     # Autant de boxe que d'emplacement -> une box X et un emplacement O
