@@ -22,7 +22,7 @@ class Element:
             self.moving(self.pos_x, oldPosY, self.pos_x, self.pos_y)
         
     def moveRight(self):
-        if self.pos_x < self.max_x[self.pos_y]:
+        if self.pos_x < self.max_x[self.pos_y] - 1:
             oldPosX = self.pos_x
             self.pos_x += 1
             self.moving(oldPosX, self.pos_y, self.pos_x, self.pos_y)
