@@ -3,10 +3,12 @@ import re #import pour expression reguliere
 import sys
 
 class MapReader:
+      
+  arrayMap = []
+  
   def __init__(self, mapPath):
     self.mapPath = mapPath
     self.map = None
-    self.arrayMap = None
     self.readMap()
   
   def readMap(self):
@@ -50,18 +52,18 @@ class MapReader:
           return False
 
     #On verifie que la map est fermée
-    self.arrayMap = self.map.split('\n')
-    self.arrayMap = [re.sub("^(\s*)[^#]", '', item) for item in self.arrayMap]
+    MapReader.arrayMap = self.map.split('\n')
+    MapReader.arrayMap = [re.sub("^(\s*)[^#]", '', item) for item in MapReader.arrayMap]
 
-    for i in enumerate(self.arrayMap):
-          if i[0] == 0 or len(self.arrayMap) - 1 == i[0]:
-                if re.search("[^#]", self.arrayMap[i[0]]):
-                      print(i, re.match("[^#]", self.arrayMap[i[0]]))
+    for i in enumerate(MapReader.arrayMap):
+          if i[0] == 0 or len(MapReader.arrayMap) - 1 == i[0]:
+                if re.search("[^#]", MapReader.arrayMap[i[0]]):
+                      print(i, re.match("[^#]", MapReader.arrayMap[i[0]]))
                       print(f"Cette map n'est pas valide: Il faut une map avec les bordures fermées")
                       return False
           else:
-                if re.match("^#.*#$", self.arrayMap[i[0]]) == None:
-                      print(i, re.match("^#.*#$", self.arrayMap[i[0]]))
+                if re.match("^#.*#$", MapReader.arrayMap[i[0]]) == None:
+                      print(i, re.match("^#.*#$", MapReader.arrayMap[i[0]]))
                       print(f"Cette map n'est pas valide: Il faut une map avec les bordures fermées")
                       return False
     return True
@@ -69,9 +71,17 @@ class MapReader:
   def displayMap(self, stdscr):
         pos_y = 0
         
-        for line in self.arrayMap:
+        for line in MapReader.arrayMap:
               pos_y += 1
               stdscr.addstr(pos_y, 10, line)
+              
+  #On créé une methode qui renvoie le tableau en statique pour pouvoir le réutiliser pour la gestion des cas d'erreur de positions
+  
+  def getStaticMap():
+        return MapReader.arrayMap
+      
+  getStaticMap = staticmethod(getStaticMap)
+        
               
               
     
