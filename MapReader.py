@@ -29,16 +29,21 @@ class MapReader:
           print(f"Il n'y a pas assez de joueur !")
           return False
     
+    #On verifie qu'il n'y a bien que les caracteres autorisés
     for item in re.finditer("^(#|X|O|P|\s)*$", self.map.rstrip()):
           verif_caractere = True
     
     if verif_caractere != True:
           print(f"Cette map contient des caracteres non valides")
           return False
-        
-      
-    # Avec un seul Joueur -> Par un P -> sinon erreur
-    # La map doit contenir que des espaces \n des #,X,0,P
+    
+    #On verifie qu'il y autant de box que d'emplacement
+    match_pair = re.match(r"(O)|(X)", self.map)
+ 
+    if len(match_pair.group(0)) != len(match_pair.group(1)):
+          print(f"Il faut autant de box que d'emplacements !")
+          return False
+    
     # Autant de boxe que d'emplacement -> une box X et un emplacement O
     # Nous devons prendre une map en paramètre qui doit être fermée!(toutes tailles possibles)
     return self.map
